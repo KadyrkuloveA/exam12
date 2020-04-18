@@ -10,7 +10,6 @@ import PersonIcon from '@material-ui/icons/Person';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import {NavLink} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import FacebookIcon from "@material-ui/icons/Facebook";
 
 const UserMenu = ({user, logout}) => {
     const [anchorEl, setAnchorEl] = useState(null);

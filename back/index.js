@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const config = require('./config');
 const users = require('./app/users');
+const pictures = require('./app/pictures');
 
 const app = express();
 const port = 8000;
@@ -13,15 +14,16 @@ app.use(cors());
 app.use(express.static('public'));
 
 const run = async () => {
-  await mongoose.connect(config.database, config.databaseOptions);
+    await mongoose.connect(config.database, config.databaseOptions);
 
-  app.use('/users', users);
+    app.use('/users', users);
+    app.use('/pictures', pictures);
 
-  app.listen(port, () => {
-    console.log(`HTTP Server started on ${port} port!`);
-  });
+    app.listen(port, () => {
+        console.log(`HTTP Server started on ${port} port!`);
+    });
 };
 
 run().catch(e => {
-  console.error(e);
+    console.error(e);
 });
