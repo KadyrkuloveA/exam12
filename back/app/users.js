@@ -87,7 +87,7 @@ router.post('/facebook', async (req, res) => {
       const [firstName, lastName] = req.body.name.split(' ');
 
       user = new User({
-        username: req.body.id,
+        username: firstName,
         password: nanoid(),
         facebookId: req.body.id,
         firstName,

@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const item = await Picture.findById(req.params.id).populate('user', `username`);
+        const item = await Picture.findById(req.params.id).populate('user', `username`, `firstName`);
 
         if (!item) {
             return res.status(404).send({message: 'Not found'});

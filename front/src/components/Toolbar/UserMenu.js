@@ -26,7 +26,7 @@ const UserMenu = ({user, logout}) => {
         <>
             <Button color="inherit" component={NavLink} to="/addPicture" startIcon={<AddPhotoAlternateIcon/>} exact>Add
                 Picture</Button>
-            <Button color="inherit" component={NavLink} to="/" exact>My Gallery</Button>
+            <Button color="inherit" component={NavLink} to={"/pictures/" + user._id} exact>My Gallery</Button>
             <IconButton color="inherit" onClick={handleClick}>
                 <PersonIcon/>
             </IconButton>

@@ -7,12 +7,9 @@ import {logoutUser} from "../../store/actions/usersActions";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 
-import MenuIcon from '@material-ui/icons/Menu';
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
-import {toggleDrawer} from "../../store/actions/mainActions";
 
 const useStyles = makeStyles(theme => ({
     appBar: {
@@ -48,10 +45,6 @@ const AppToolbar = () => {
         <>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit"
-                                onClick={() => dispatch(toggleDrawer())}>
-                        <MenuIcon/>
-                    </IconButton>
                     <Typography variant="h6" className={classes.title}>
                         <Link to="/" className={classes.mainLink}>Social Gallery</Link>
                     </Typography>
