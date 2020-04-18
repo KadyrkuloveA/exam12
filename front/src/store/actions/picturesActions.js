@@ -27,7 +27,7 @@ export const addPicture = pictureData => {
 
 export const deletePicture = id => {
   return async dispatch => {
-    const response = await axiosApi.delete('/pictures/' + id);
+    await axiosApi.delete('/pictures/' + id);
   }
 };
 

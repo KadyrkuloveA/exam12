@@ -1,4 +1,4 @@
-import {FETCH_PICTURE_SUCCESS, FETCH_PICTURES_SUCCESS} from "../actions/picturesActions";
+import {FETCH_PICTURES_SUCCESS} from "../actions/picturesActions";
 
 const initialState = {
   pictures: []

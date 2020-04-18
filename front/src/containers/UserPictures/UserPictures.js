@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {fetchPictures} from "../../store/actions/picturesActions";
-import {connect, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import PictureGridItem from "../../components/PictureGridItem/PictureGridItem";
 
 class UserPictures extends Component {
