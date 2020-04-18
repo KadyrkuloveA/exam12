@@ -27,19 +27,19 @@ const run = async () => {
   await Picture.create({
     title: 'Girl',
     user: user1,
-    image: 'uploads/fixtures/girl.jpg'
+    image: 'fixtures/girl.jpg'
   }, {
     title: 'Girl2',
     user: user1,
-    image: 'uploads/fixtures/girl2.png'
+    image: 'fixtures/girl2.png'
   }, {
     title: 'Beach',
     user: user2,
-    image: 'uploads/fixtures/beach.jpg'
+    image: 'fixtures/beach.jpg'
   }, {
     title: 'Motion',
     user: user2,
-    image: 'uploads/fixtures/motion.jpg'
+    image: 'fixtures/motion.jpg'
   });
 
   mongoose.connection.close();
