@@ -1,6 +1,3 @@
-const path = require('path');
-const fs = require('fs');
-
 const express = require('express');
 const bcrypt = require("bcrypt");
 const axios = require("axios");
@@ -8,9 +5,6 @@ const {nanoid} = require("nanoid");
 
 const config = require('../config');
 const User = require('../models/User');
-const auth = require('../middleware/auth');
-
-const upload = require('../multer').avatar;
 
 const router = express.Router();
 
@@ -47,37 +41,6 @@ router.post('/sessions', async (req, res) => {
   await user.save();
 
   return res.send(user);
-});
-
-router.patch('/profile', [auth, upload.single('avatar')], async (req, res) => {
-  try {
-    if (req.body.password) {
-      req.user.password = req.body.password;
-    }
-
-    if (req.file) {
-      if (req.user.avatar) {
-        await fs.promises.unlink(path.join(config.uploadPath, req.user.avatar));
-      }
-
-      req.user.avatar = req.file.filename;
-    }
-
-    if (req.body.firstName) {
-      req.user.firstName = req.body.firstName;
-    }
-
-    if (req.body.lastName) {
-      req.user.lastName = req.body.lastName;
-    }
-
-    await req.user.save();
-
-    return res.send(req.user);
-  } catch (e) {
-    console.error(e);
-    return res.sendStatus(500);
-  }
 });
 
 router.delete('/sessions', async (req, res) => {
