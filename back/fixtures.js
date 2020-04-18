@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('./config');
 const User = require('./models/User');
+const Picture = require('./models/Picture');
 const {nanoid} = require("nanoid");
 
 const run = async () => {
@@ -12,7 +13,7 @@ const run = async () => {
     await mongoose.connection.db.dropCollection(coll.name);
   }
 
-  await User.create({
+  const [user1, user2] = await User.create({
     username: 'user',
     password: '123',
     token: nanoid(),
@@ -21,6 +22,24 @@ const run = async () => {
     password: 'admin123',
     role: 'admin',
     token: nanoid(),
+  });
+
+  await Picture.create({
+    title: 'Girl',
+    user: user1,
+    image: 'uploads/fixtures/girl.jpg'
+  }, {
+    title: 'Girl2',
+    user: user1,
+    image: 'uploads/fixtures/girl2.png'
+  }, {
+    title: 'Beach',
+    user: user2,
+    image: 'uploads/fixtures/beach.jpg'
+  }, {
+    title: 'Motion',
+    user: user2,
+    image: 'uploads/fixtures/motion.jpg'
   });
 
   mongoose.connection.close();
