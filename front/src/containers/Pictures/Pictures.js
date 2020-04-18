@@ -1,44 +1,37 @@
-import React, {Component} from 'react';
-import Grid from "@material-ui/core/Grid";
+import React, {Fragment, useEffect} from 'react';
 import PictureGridItem from "../../components/PictureGridItem/PictureGridItem";
 import {fetchPictures} from "../../store/actions/picturesActions";
 import {connect} from "react-redux";
 
-class Pictures extends Component {
+const Pictures = props => {
 
-    componentDidMount() {
-        this.props.fetchPictures(this.props.match.params.id);
-    }
+    useEffect(() => {
+        props.fetchPictures();
+        //eslint-disable-next-line
+    }, []);
 
-    componentDidUpdate(prevProps) {
-        if (this.props.match.params.id !== prevProps.match.params.id) {
-            this.props.fetchPictures(this.props.match.params.id);
-        }
-    }
 
-    render() {
-        return (
-            <Grid item container direction="row" spacing={1}>
-                {this.props.pictures.map(picture => (
-                    <PictureGridItem
-                        key={picture._id}
-                        title={picture.title}
-                        id={picture._id}
-                        image={picture.image}
-                        user={picture.user}
-                    />
-                ))}
-            </Grid>
-        );
-    }
-}
+    return (
+        <Fragment>
+            {props.pictures.map(picture => (
+                <PictureGridItem
+                    key={picture._id}
+                    title={picture.title}
+                    id={picture._id}
+                    image={picture.image}
+                    user={picture.user}
+                />
+            ))}
+        </Fragment>
+    );
+};
 
 const mapStateToProps = state => ({
     pictures: state.pictures.pictures,
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchPictures: userId => dispatch(fetchPictures(userId))
+    fetchPictures: () => dispatch(fetchPictures()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pictures);

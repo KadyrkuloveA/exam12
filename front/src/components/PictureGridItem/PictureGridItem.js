@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -12,6 +11,7 @@ import {Link} from "react-router-dom";
 import {makeStyles} from "@material-ui/core/styles";
 import {apiURL} from "../../constants";
 import imageNotAvailable from "../../assets/images/image_not_available.jpg";
+import Popup from "../Popup/Popup";
 
 const useStyles = makeStyles({
     card: {
@@ -42,6 +42,10 @@ const PictureGridItem = props => {
                         {props.user.username}
                         <ArrowForwardIcon/>
                     </IconButton>
+                    <Popup
+                        title={props.title}
+                        image={props.image}
+                    />
                 </CardActions>
             </Card>
         </Grid>
@@ -52,7 +56,7 @@ PictureGridItem.propTypes = {
     image: PropTypes.string,
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    user: PropTypes.number.isRequired
+    user: PropTypes.any.isRequired
 };
 
 export default PictureGridItem;
