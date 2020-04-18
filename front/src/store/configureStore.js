@@ -13,8 +13,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   router: connectRouter(history),
   users: usersReducer,
-  pictures: picturesReducer,
-  picture: picturesReducer
+  pictures: picturesReducer
 });
 
 const middleware = [

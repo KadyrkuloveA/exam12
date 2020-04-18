@@ -8,7 +8,8 @@ import {
 const initialState = {
   registerError: null,
   user: null,
-  loginError: null
+  loginError: null,
+  userId: 1
 };
 
 const usersReducer = (state = initialState, action) => {

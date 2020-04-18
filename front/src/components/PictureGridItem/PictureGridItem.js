@@ -45,6 +45,8 @@ const PictureGridItem = props => {
                     <Popup
                         title={props.title}
                         image={props.image}
+                        user={props.user}
+                        id={props.id}
                     />
                 </CardActions>
             </Card>
